@@ -1,11 +1,14 @@
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
+import Routing from "./components/Routing/Routing";
 
 const App = () => {
   return (
     <div className="app">
       <Navbar />
-      <main>라우팅</main>
+      <main>
+        <Routing />
+      </main>
     </div>
   );
 };
