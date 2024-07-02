@@ -1,6 +1,7 @@
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import Routing from "./components/Routing/Routing";
+// import Footer from "./components/Footer/Footer";
 
 const App = () => {
   return (
@@ -9,6 +10,9 @@ const App = () => {
       <main>
         <Routing />
       </main>
+      {/* <footer>
+        <Footer />
+      </footer> */}
     </div>
   );
 };

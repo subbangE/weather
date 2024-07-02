@@ -5,8 +5,10 @@
 .authentication_form {
   width: 30%;
   padding: 70px 55px;
-  margin-top: 130px;
-  border: solid 1px #8d8d8d;
+  margin-top: 80px;
+  margin-bottom: 200px;
+  border: solid 2px skyblue;
+  background-color: #fff;
 }
 
 .authentication_form h2 {

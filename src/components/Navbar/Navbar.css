@@ -13,12 +13,11 @@
 .navbar_form {
   width: 450px;
   height: 40px;
-  border: 1px solid #cdcdcd;
   border-radius: 5px;
   padding: 3px;
 }
 
-/* .navbar_search {
+.navbar_search {
   flex: 1;
   height: 100%;
   padding: 0 7px;
@@ -31,14 +30,13 @@
 .search_button {
   height: 100%;
   padding: 5px 10px;
+  margin-left: 3px;
   font-size: 20px;
   font-weight: 500;
   border: none;
-  border-radius: 5px;
-  background-color: #c5efff;
-  color: #fff;
+  color: #5a5a5a;
   cursor: pointer;
-} */
+}
 
 .navbar_links {
   font-size: 20px;
