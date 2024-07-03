@@ -1,10 +1,6 @@
 import "./WeatherForecastBox.css";
 
 const WeatherForecastBox = ({ forecast }) => {
-  // 예보 데이터를 반복하여 출력
-
-  console.log(forecast);
-  console.log(forecast?.data.list[0].dt_text);
   return (
     <div className="forecast-container">
       <h2>시간별 날씨</h2>

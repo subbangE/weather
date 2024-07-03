@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./LoginPage.css";
+import { useSignup } from "../../hooks/useSignup";
 
 const SignupPage = () => {
+  const { signup } = useSignup();
   const [formError, setFormError] = useState("");
 
   const {
@@ -12,7 +14,16 @@ const SignupPage = () => {
     watch,
   } = useForm();
 
-  const submitData = (formData) => console.log(formData);
+  const submitData = async (formData) => {
+    const { name, email, password } = formData;
+
+    try {
+      await signup(email, password, name);
+      window.location = "/"; //가입되어 홈페이지로 이동
+    } catch (err) {
+      setFormError(err.response.data.message);
+    }
+  };
 
   return (
     <section className="align_center form_page">
@@ -67,7 +78,7 @@ const SignupPage = () => {
               placeholder="패스워드 입력"
               {...register("password", {
                 required: "패스워드를 입력해주세요.",
-                minLength: { value: 4, message: "패스워드는 최소 4자 이상." },
+                minLength: { value: 6, message: "패스워드는 최소 6자 이상." },
               })}
             />
             {errors.password && (

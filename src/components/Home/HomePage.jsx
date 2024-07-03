@@ -6,9 +6,26 @@ import WeatherForecastBox from "./WeatherForecastBox";
 import { useLocation } from "react-router-dom";
 
 const HomePage = () => {
+  const [currentDate, setCurrentDate] = useState(new Date());
   const [weather, setWeather] = useState(null); // 현재 날씨
   const [forecast, setForecast] = useState(null); // 5일 예보 정보
   const location = useLocation();
+
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
+    return `${year}년 ${month}월 ${day}일`;
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentDate(new Date());
+    }, 1000); // 1초 간격으로 타이머 설정
+
+    return () => clearInterval(timer); // 컴포넌트 언마운트 시 타이머 정리
+  }, []);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -38,7 +55,7 @@ const HomePage = () => {
             setWeather(data);
           })
           .catch((error) => {
-            console.error("Error fetching current weather data:", error);
+            console.error("데이터 불러오기 오류:", error);
           });
 
         // 5일 예보 정보 가져오기
@@ -50,11 +67,11 @@ const HomePage = () => {
             setForecast(data);
           })
           .catch((error) => {
-            console.error("Error fetching forecast data:", error);
+            console.error("데이터 불러오기 오류:", error);
           });
       });
     } else {
-      alert("Geolocation is not supported by this browser.");
+      alert("현재 위치를 불러올 수 없습니다.");
     }
   };
 
@@ -64,7 +81,6 @@ const HomePage = () => {
 
     axios.get(url).then((data) => {
       setWeather(data);
-      console.log(data);
     });
   };
 
@@ -74,13 +90,19 @@ const HomePage = () => {
 
     axios.get(url).then((data) => {
       setForecast(data);
-      console.log(data);
     });
   };
 
   return (
     <div>
-      <div>{weather && <WeatherBox weather={weather}></WeatherBox>}</div>
+      <div>
+        {weather && (
+          <WeatherBox
+            weather={weather}
+            currentDate={formatDate(currentDate)}
+          ></WeatherBox>
+        )}
+      </div>
       <div>{forecast && <WeatherForecastBox forecast={forecast} />}</div>
     </div>
   );

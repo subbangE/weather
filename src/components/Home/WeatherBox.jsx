@@ -1,10 +1,11 @@
 import "./WeatherBox.css";
 
-const WeatherBox = ({ weather }) => {
+const WeatherBox = ({ weather, currentDate }) => {
   return (
     <div className="weather-container">
       <div className="weather-box">
-        <h2>현재 위치</h2>
+        <h3>{currentDate}</h3>
+        <h2>현재 날씨</h2>
         <div className="location">{weather?.data.name}</div>
         <div className="temperature">{`${Math.round(
           weather?.data.main.temp
