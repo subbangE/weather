@@ -1,7 +1,12 @@
 import "./LoginPage.css";
 import { useForm } from "react-hook-form";
+// import { useLogin } from "../../hooks/useLogin";
+import { useState } from "react";
 
 const LoginPage = () => {
+  const { login } = useLogin();
+  const [formError, setFormError] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -9,7 +14,16 @@ const LoginPage = () => {
   } = useForm();
 
   // react-hook-form 사용
-  const submitData = (formData) => console.log(formData);
+  const submitData = async (formData) => {
+    const { email, password } = formData;
+
+    try {
+      await login(email, password);
+      window.location = "/"; //가입되어 홈페이지로 이동
+    } catch (err) {
+      setFormError(err.response.data.message);
+    }
+  };
 
   return (
     <section className="align_center form_page">
@@ -44,6 +58,7 @@ const LoginPage = () => {
             )}
           </div>
 
+          {formError && <em className="form_error">{formError}</em>}
           <button type="submit" className="search_button form_submit">
             로그인
           </button>

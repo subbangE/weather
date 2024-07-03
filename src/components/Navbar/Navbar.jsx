@@ -3,7 +3,7 @@ import LinkWithTitle from "./LinkWithTitle";
 import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
@@ -37,10 +37,18 @@ const Navbar = () => {
       </div>
       <div className="align_center navbar_links">
         <LinkWithTitle title="홈" link="/" />
-        <LinkWithTitle title="로그인" link="/login" />
-        <LinkWithTitle title="회원가입" link="/signup" />
-        <LinkWithTitle title="문의" link="/qna" />
-        <LinkWithTitle title="로그아웃" link="/logout" />
+        {!user && (
+          <>
+            <LinkWithTitle title="로그인" link="/login" />
+            <LinkWithTitle title="회원가입" link="/signup" />
+          </>
+        )}
+        {user && (
+          <>
+            <LinkWithTitle title="문의" link="/qna" />
+            <LinkWithTitle title="로그아웃" link="/logout" />
+          </>
+        )}
       </div>
     </nav>
   );
