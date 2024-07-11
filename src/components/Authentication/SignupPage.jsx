@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./LoginPage.css";
 import { useSignup } from "../../hooks/useSignup";
+import { db } from "../../firebaseConfig";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 const SignupPage = () => {
   const { signup } = useSignup();
@@ -19,6 +21,11 @@ const SignupPage = () => {
 
     try {
       await signup(email, password, name);
+      await addDoc(collection(db, "users"), {
+        email: email,
+        name: name,
+        createdAt: serverTimestamp(),
+      });
       window.location = "/"; //가입되어 홈페이지로 이동
     } catch (err) {
       setFormError(err.response.data.message);

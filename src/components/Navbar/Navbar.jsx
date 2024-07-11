@@ -14,7 +14,6 @@ const Navbar = ({ user }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("검색어:", search);
     navigate(`/home?search=${search}`);
   };
 

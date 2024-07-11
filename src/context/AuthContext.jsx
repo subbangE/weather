@@ -23,7 +23,7 @@ export const AuthContextProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    // 처음 시작시 유저를  확인해서 유저정보(없으면NULL)와 인증확인 액션 디스패치
+    // 처음 시작시 유저를 확인해서 유저정보(없으면NULL)와 인증확인 액션 디스패치
     const unsub = auth.onAuthStateChanged((user) => {
       dispatch({ type: "AUTH_IS_READY", payload: user });
       unsub();

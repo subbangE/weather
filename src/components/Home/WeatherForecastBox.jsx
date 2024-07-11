@@ -17,14 +17,6 @@ const WeatherForecastBox = ({ forecast }) => {
           </div>
         ))}
       </div>
-
-      {/* <div className="forecast-items">{forecast?.data.list[0].dt_txt}</div>
-      <img
-        src={`http://openweathermap.org/img/wn/${forecast?.data.list[0].weather[0].icon}@2x.png`}
-        alt="Weather Icon"
-      ></img>
-      <div>{forecast?.data.list[0].main.temp}</div>
-      <div>{forecast?.data.list[0].weather[0].description}</div> */}
     </div>
   );
 };

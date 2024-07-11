@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./QnaPage.css";
+import "./QnaListPage.css";
 const QnaPage = () => {
   const posts = [
     {
@@ -27,11 +27,16 @@ const QnaPage = () => {
         <div className="post" key={post.id}>
           <Link to={`/post/${post.id}`} className="post-link">
             <h2>{post.title}</h2>
-            <p className="post-meta">작성자: {post.author}</p>
-            <p className="post-meta">작성일: {post.date}</p>
           </Link>
+          <p className="post-meta">작성자: {post.author}</p>
+          <p className="post-meta">작성일: {post.date}</p>
         </div>
       ))}
+      <div className="qna-btn">
+        <Link to={"/create"}>
+          <button>문의하기</button>
+        </Link>
+      </div>
     </div>
   );
 };

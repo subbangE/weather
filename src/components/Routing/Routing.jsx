@@ -3,7 +3,8 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import LoginPage from "../Authentication/LoginPage";
 import SignupPage from "../Authentication/SignupPage";
 import HomePage from "../Home/HomePage";
-import QnaPage from "../Qna/QnaPage";
+import QnaListPage from "../Qna/QnaListPage";
+import QnaCreatePage from "../Qna/QnaCreatePage";
 import LogoutPage from "../Authentication/LogoutPage";
 
 const Routing = ({ user }) => {
@@ -24,9 +25,15 @@ const Routing = ({ user }) => {
       />
       <Route
         path="/qna"
-        element={user ? <QnaPage /> : <Navigate to="/login" />}
+        element={user ? <QnaListPage /> : <Navigate to="/login" />}
       />
       <Route path="/logout" element={<LogoutPage />} />
+      <Route
+        path="/create"
+        element={
+          user ? <QnaCreatePage user={user} /> : <Navigate to="/login" />
+        }
+      />
     </Routes>
   );
 };
