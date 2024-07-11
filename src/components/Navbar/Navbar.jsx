@@ -15,6 +15,7 @@ const Navbar = ({ user }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     navigate(`/home?search=${search}`);
+    setSearch("");
   };
 
   return (
