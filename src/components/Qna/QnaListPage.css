@@ -10,7 +10,7 @@
 .board-name {
   margin-bottom: 25px;
   padding: 20px;
-  background-color: rgb(245, 147, 180);
+  background-color: #3c5fa0;
   color: #fff;
   border-radius: 8px 8px 0px 0px;
 }
@@ -57,7 +57,7 @@
 
 .qna-btn button {
   padding: 6px;
-  background-color: rgb(245, 147, 180);
+  background-color: #5c7cb8;
   color: white;
   border: none;
   border-radius: 4px;
@@ -66,5 +66,5 @@
 }
 
 .qna-btn button:hover {
-  background-color: rgb(150, 48, 82);
+  background-color: #1d3a6e;
 }
