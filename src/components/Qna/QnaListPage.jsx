@@ -1,22 +1,29 @@
 import { Link } from "react-router-dom";
 import "./QnaListPage.css";
+import { db } from "../../firebaseConfig";
+import { collection, getDocs } from "firebase/firestore";
+import { useEffect, useState } from "react";
 const QnaPage = () => {
-  const posts = [
-    {
-      id: 1,
-      title: "첫 번째 게시물 제목",
-      author: "John Doe",
-      date: "2024-07-04",
-      content: "첫 번째 게시물의 내용입니다.",
-    },
-    {
-      id: 2,
-      title: "두 번째 게시물 제목",
-      author: "Jane Smith",
-      date: "2024-07-03",
-      content: "두 번째 게시물의 내용입니다.",
-    },
-  ];
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const postsSnapshot = await getDocs(collection(db, "posts"));
+        const postsData = postsSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          title: doc.data().title,
+          creatorName: doc.data().creatorName,
+          createdAt: doc.data().createdAt.toDate(),
+        }));
+        setPosts(postsData);
+      } catch (error) {
+        console.error("posts 에러", error);
+      }
+    };
+
+    fetchPosts();
+  });
 
   return (
     <div className="board">
@@ -28,8 +35,8 @@ const QnaPage = () => {
           <Link to={`/post/${post.id}`} className="post-link">
             <h2>{post.title}</h2>
           </Link>
-          <p className="post-meta">작성자: {post.author}</p>
-          <p className="post-meta">작성일: {post.date}</p>
+          <p className="post-meta">작성자: {post.creatorName}</p>
+          <p className="post-meta">작성일: {post.createdAt.toLocaleString()}</p>
         </div>
       ))}
       <div className="qna-btn">
