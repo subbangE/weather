@@ -26,7 +26,7 @@ const Navbar = ({ user }) => {
           <input
             type="text"
             className="navbar_search"
-            placeholder="지역 검색"
+            placeholder="지역 검색 (ex. london, seoul 등)"
             value={search}
             onChange={handleChange}
           />

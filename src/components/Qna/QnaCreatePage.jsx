@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./QnaCreatePage.css";
+import "./QnaPage.css";
 import { db } from "../../firebaseConfig";
 import {
   collection,
@@ -33,7 +33,7 @@ const QnaPostPage = ({ user }) => {
     };
 
     fetchUserData();
-  }, []);
+  }, [db]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -58,7 +58,7 @@ const QnaPostPage = ({ user }) => {
 
   return (
     <div className="qna-post">
-      <h1>문의</h1>
+      <h1>문의 작성</h1>
       <form onSubmit={handleSubmit}>
         <div className="formGroup">
           <label htmlFor="title">제목:</label>
@@ -81,7 +81,7 @@ const QnaPostPage = ({ user }) => {
           />
         </div>
         <button className="post-btn" type="submit">
-          제출
+          등록
         </button>
       </form>
     </div>

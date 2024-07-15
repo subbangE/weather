@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import "./HomePage.css";
-import axios from "axios";
 import WeatherBox from "./WeatherBox";
 import WeatherForecastBox from "./WeatherForecastBox";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 const HomePage = () => {
   const [currentDate, setCurrentDate] = useState(new Date());

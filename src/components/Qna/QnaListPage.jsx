@@ -23,7 +23,7 @@ const QnaPage = () => {
     };
 
     fetchPosts();
-  });
+  }, [db]);
 
   return (
     <div className="board">

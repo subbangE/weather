@@ -28,6 +28,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  font-size: 18px;
 }
 
 .post-btn {
@@ -43,5 +44,39 @@
 }
 
 .post-btn:hover {
+  background-color: #3c5fa0;
+}
+
+.btns {
+  text-align: right;
+}
+
+.btns > button {
+  background-color: #5c7cb8;
+  color: white;
+  padding: 7px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 6px;
+}
+
+.btns > button:hover {
+  background-color: #3c5fa0;
+}
+
+.link-btn > button {
+  background-color: #5c7cb8;
+  color: white;
+  padding: 7px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 6px;
+}
+
+.link-btn > button:hover {
   background-color: #3c5fa0;
 }
