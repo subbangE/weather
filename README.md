@@ -1,8 +1,18 @@
-# React + Vite
+# 메시지 숨김 버튼 구현
++ 개발 기간 : 2024.07.02 ~ 2024.07.15(실질적인 소요 기간 총 7일)
++ 개발 인원 : 1명
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 배경
++ 아침마다 날씨를 항상 찾아보는 나의 모습에서 생각나 만들게 됨
 
-Currently, two official plugins are available:
+## 개발 환경 및 적용 기술
+- REACT
+- firebase
+- Open API
+- 사용 언어 : JAVA
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 구현 기능
++ 회원 가입 기능
++ 로그인 기능
++ 날씨 검색 기능
++ 문의 게시판 CRUD
