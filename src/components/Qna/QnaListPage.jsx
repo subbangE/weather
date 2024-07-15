@@ -5,9 +5,9 @@ import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import loadingGIF from "../../assets/loading.gif";
 
-const QnaPage = () => {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+const QnaPage = ({ user }) => {
+  const [posts, setPosts] = useState([]); // 포스트 배열
+  const [loading, setLoading] = useState(true); // 로딩
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -27,7 +27,7 @@ const QnaPage = () => {
     };
 
     fetchPosts();
-  }, [db]);
+  }, [db, user]);
 
   if (loading) {
     return (
