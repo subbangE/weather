@@ -3,8 +3,11 @@ import "./QnaListPage.css";
 import { db } from "../../firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import loadingGIF from "../../assets/loading.gif";
+
 const QnaPage = () => {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -17,6 +20,7 @@ const QnaPage = () => {
           createdAt: doc.data().createdAt.toDate(),
         }));
         setPosts(postsData);
+        setLoading(false);
       } catch (error) {
         console.error("posts 에러", error);
       }
@@ -24,6 +28,14 @@ const QnaPage = () => {
 
     fetchPosts();
   }, [db]);
+
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <img src={loadingGIF} alt="Loading" />
+      </div>
+    );
+  }
 
   return (
     <div className="board">

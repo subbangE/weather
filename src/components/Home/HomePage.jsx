@@ -3,8 +3,10 @@ import WeatherBox from "./WeatherBox";
 import WeatherForecastBox from "./WeatherForecastBox";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import loadingGIF from "../../assets/loading.gif";
 
 const HomePage = () => {
+  const [loading, setLoading] = useState(true);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [weather, setWeather] = useState(null); // 현재 날씨
   const [forecast, setForecast] = useState(null); // 5일 예보 정보
@@ -68,6 +70,7 @@ const HomePage = () => {
           .catch((error) => {
             console.error("데이터 불러오기 오류:", error);
           });
+        setLoading(false);
       });
     } else {
       alert("현재 위치를 불러올 수 없습니다.");
@@ -91,6 +94,14 @@ const HomePage = () => {
       setForecast(data);
     });
   };
+
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <img src={loadingGIF} alt="Loading" />
+      </div>
+    );
+  }
 
   return (
     <div>

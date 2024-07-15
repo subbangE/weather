@@ -26,10 +26,8 @@ const QnaPostPage = ({ user }) => {
     const fetchUserData = async () => {
       const querySnapshot = await getDocs(q);
 
-      // 일치하는 문서가 있다면 name 필드 값 설정
-      querySnapshot.forEach((doc) => {
-        setName(doc.data().name);
-      });
+      const userData = querySnapshot.docs[0].data();
+      setName(userData.name);
     };
 
     fetchUserData();
