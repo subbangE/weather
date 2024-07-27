@@ -6,7 +6,7 @@
 + 아침마다 날씨를 항상 찾아보는 모습이 생각나 만들게 됨
 
 ## 개발 환경 및 적용 기술
-- REACT
+- REACT(Vite)
 - firebase
 - Open API
 - 사용 언어 : JAVA
